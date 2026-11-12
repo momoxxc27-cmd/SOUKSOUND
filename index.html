@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SOUK SOUND - Votre univers musical</title>
+
+    <meta name="description" content="SOUK SOUND, découvrez, écoutez et téléchargez vos musiques préférées.">
+
+    <!-- Icône du site -->
+    <link rel="icon" href="assets/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="app.js">
+
+</head>
+
+<body>
+    <div class="appShell">
+    <!-- Barre latérale -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sideTop">
+        <button class="logo" data-page="home" aria-label="SOUK SOUND, accueil">
+          <span class="logoMark">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span>SOUK <b>SOUND</b></span>
+        </button>
+
+        <button
+          class="mobileClose iconButton"
+          id="close-menu"
+          aria-label="Fermer le menu"
+        >
+          ×
+        </button>
+      </div>
+
+      <nav class="sideNav" aria-label="Navigation principale">
+        <span class="navLabel">Découvrir</span>
+
+        <button class="active" data-page="home">
+          <span class="nav-icon">⌂</span>
+          <span>Accueil</span>
+        </button>
+
+        <button data-page="explore">
+          <span class="nav-icon">◇</span>
+          <span>Explorer</span>
+        </button>
+
+        <button data-page="explore">
+          <span class="nav-icon">↗️</span>
+          <span>Tendances</span>
+        </button>
+
+        <span class="navLabel second">Ma musique</span>
+
+        <button data-page="library">
+          <span class="nav-icon">▥</span>
+          <span>Bibliothèque</span>
+        </button>
+
+        <button data-page="playlists">
+          <span class="nav-icon">☷</span>
+          <span>Playlists</span>
+        </button>
+
+        <button data-page="downloads">
+          <span class="nav-icon">↓</span>
+          <span>Téléchargements</span>
+        </button>
+
+        <button data-page="library">
+          <span class="nav-icon">♡</span>
+          <span>Favoris</span>
+        </button>
+      </nav>
+
+      <div class="sidePlaylist">
+        <div class="playlistIcon">♫</div>
+
+        <div>
+          <b>Daily Mix</b>
+          <span>Mis à jour pour vous</span>
+        </div>
+
+        <button data-page="playlists" aria-label="Ouvrir Daily Mix">›</button>
+      </div>
+
+      <div class="upgrade">
+        <span>ESSAI PREMIUM</span>
+        <strong>Le son sans limites.</strong>
+
+        <p>Zéro publicité, qualité HD et écoute hors-ligne.</p>
+
+        <button
+          class="toast-trigger"
+          data-message="Offre Premium bientôt disponible"
+        >
+          Découvrir l'offre
+        </button>
+      </div>
+
+      <button class="sideUser" data-page="profile">
+        <img src="images/hero-naya.jpg" alt="Yanis Amrani" />
+
+        <span class="side-user-copy">
+          <strong>Yanis Amrani</strong>
+          <small>Compte Premium</small>
+        </span>
+
+        <b>•••</b>
+      </button>
+    </aside>
+
+    <!-- Fond affiché quand le menu mobile est ouvert -->
+    <button
+      class="menuOverlay"
+      id="menu-overlay"
+      aria-label="Fermer le menu"
+    ></button>
+
+    <!-- Contenu principal -->
+    <main class="mainArea">
+      <!-- Barre supérieure -->
+      <header class="topbar">
+        <button
+          class="menuButton iconButton"
+          id="open-menu"
+          aria-label="Ouvrir le menu"
+        >
+          ☰
+        </button>
+
+        <div class="mobileLogo">
+          <span class="logoMark">
+            <i></i><i></i><i></i><i></i>
+          </span>
+        </div>
+
+        <label class="searchBar">
+          <span aria-hidden="true">⌕</span>
+
+          <input
+            id="search"
+            type="search"
+            placeholder="Rechercher un titre, un artiste, un album..."
+            autocomplete="off"
+          />
+
+          <kbd>⌘ K</kbd>
+        </label>
+
+        <div class="topActions">
+          <button
+            class="iconButton notification toast-trigger"
+            data-message="Aucune nouvelle notification"
+            aria-label="Notifications"
+          >
+            ♢
+            <i></i>
+          </button>
+
+          <button class="profileButton" data-page="profile">
+            <img src="images/hero-naya.jpg" alt="Yanis Amrani" />
+            <span>Yanis</span>
+            <b>⌄</b>
+          </button>
+        </div>
+      </header>
+
+      <!--
+        Les différentes pages sont ajoutées dans ce conteneur
+        par le fichier app.js.
+      -->
+      <div class="pageContent" id="page-content"></div>
+    </main>
+
+    <!-- Lecteur musical -->
+    <footer class="player" aria-label="Lecteur musical">
+      <div class="nowPlaying">
+        <img id="player-cover" src="" alt="Pochette du morceau" />
+
+        <div>
+          <strong id="player-title"></strong>
+          <span id="player-artist"></span>
+        </div>
+
+        <button id="player-like" aria-label="Ajouter aux favoris">♡</button>
+      </div>
+
+      <div class="playerCenter">
+        <div class="controls">
+          <button aria-label="Lecture aléatoire">⌁</button>
+
+          <button id="previous-track" aria-label="Titre précédent">◀️</button>
+
+          <button class="mainPlay" id="main-play" aria-label="Lecture">
+            ▶️
+          </button>
+
+          <button id="next-track" aria-label="Titre suivant">▶️</button>
+
+          <button aria-label="Répéter">↻</button>
+        </div>
+
+        <div class="timeline">
+          <span id="current-time">0:00</span>
+
+          <input
+            id="progress"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            aria-label="Progression"
+          />
+
+          <span id="duration">3:24</span>
+        </div>
+      </div>
+
+      <div class="playerRight">
+        <span>☷</span>
+        <span>◖</span>
+
+        <input
+          id="volume"
+          type="range"
+          min="0"
+          max="100"
+          value="72"
+          aria-label="Volume"
+        />
+      </div>
+    </footer>
+
+    <!-- Navigation mobile -->
+    <nav class="mobileNav" aria-label="Navigation mobile">
+      <button class="active" data-page="home">
+        <b>⌂</b>
+        <span>Accueil</span>
+      </button>
+
+      <button data-page="explore">
+        <b>◇</b>
+        <span>Explorer</span>
+      </button>
+
+      <button data-page="library">
+        <b>▥</b>
+        <span>Bibliothèque</span>
+      </button>
+
+      <button data-page="profile">
+        <b>♙</b>
+        <span>Profil</span>
+      </button>
+    </nav>
+
+    <!-- Notification temporaire -->
+    <div class="toast" id="toast" role="status">
+      ✓
+      <span></span>
+    </div>
+  </div>
+
+  <!-- Fichier JavaScript -->
+  <script src="app.js"></script>
+
+
+</body>
+</html>
